@@ -1,0 +1,119 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace ConsoleApp1
+{
+    class Country
+    {
+        public string name;
+        public string stolica;
+        public List<string> countryList = new List<string>();
+        public void One()
+        {
+            Country country = new Country();
+            Console.Write("Введите название страны: ");
+            country.name = Console.ReadLine();
+            Console.Write("Введите название столицы: ");
+            country.stolica = Console.ReadLine();
+            countryList.Add(country.name + " " + country.stolica);
+        }
+        public void Two()
+        {
+            for (int i = 0; i < countryList.Count; i++)
+            {
+                Console.WriteLine(countryList[i]);
+            }
+        }
+        public Country(string Name, string Stolica)
+        {
+            name = Name;
+            stolica = Stolica;
+        }
+        public Country() { }
+    }
+    class Hotel
+    {
+        public string name;
+        public int star;
+        public string opisanie;
+        public string a;
+        public Country strana;
+        public List<string> hotelList = new List<string>();
+        public void Three()
+        {
+            Hotel hotel = new();
+            Console.Write("Введите название отеля: ");
+            hotel.name = Console.ReadLine();
+            Console.Write("Введите количество звезд: ");
+            hotel.star = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите краткое описание: ");
+            hotel.opisanie = Console.ReadLine();
+            Console.Write("Введите страну, где находится отель: ");
+            string hotelLoc = Console.ReadLine();
+            hotelList.Add(hotel.name + " " + hotel.star + " " + hotel.opisanie + " " + hotelLoc);
+
+        }
+        public void Four()
+        {
+            for (int i = 0; i < hotelList.Count; i++)
+            {
+                Console.WriteLine(hotelList[i]);
+            }
+        }
+        public Hotel(string Name, int Star, string Opisanie, Country Strana)
+        {
+            name = Name;
+            star = Star;
+            opisanie = Opisanie;
+            strana = Strana;
+        }
+        public Hotel() { }
+    }
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Hotel hotel = new Hotel();
+            Country country = new Country();
+
+            while (true)
+            {
+                Console.WriteLine("Выберите действие");
+                Console.WriteLine("1) Добавить страну");
+                Console.WriteLine("2) Вывести все страны");
+                Console.WriteLine("3) Добавить отель");
+                Console.WriteLine("4) Вывести все отели");
+                Console.WriteLine("5) Выйти из программы");
+                int n = Convert.ToInt32(Console.ReadLine());
+                if (n == 1)
+                {
+                    country.One();
+                }
+                else if (n == 2)
+                {
+                    country.Two();
+                }
+                else if (n == 3)
+                {
+                    hotel.Three();
+                }
+                else if (n == 4)
+                {
+                    hotel.Four();
+                }
+                else if (n == 5)
+                {
+                    break;
+                }
+                else
+                    Console.WriteLine("Ошибка");
+                
+            }
+        }
+    }
+}
